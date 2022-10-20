@@ -12,11 +12,8 @@ type Props = {
 function RatingSelect({ select, defaultValue }: Props) {
   const [selected, setSelected] = useState(defaultValue);
   const context = useContext(FeedbackContext);
-  if (!context) {
-    throw new Error('Must be used under provider');
-  }
   useEffect(() => {
-    if (context.feedbackEditData.isEditing) {
+    if (context.feedbackEditData.isEditing && context.feedbackEditData.item) {
       setSelected(context.feedbackEditData.item.rating);
     }
   }, [context.feedbackEditData]);

@@ -15,7 +15,7 @@ function FeedbackForm() {
   const [message, setMessage] = useState<string | null>('');
   useEffect(() => {
     console.log('ff effect');
-    if (context.feedbackEditData.isEditing) {
+    if (context.feedbackEditData.isEditing && context.feedbackEditData.item) {
       setButtonDisabled(false);
       setText(context.feedbackEditData.item.text);
       setRating(context.feedbackEditData.item.rating);
@@ -41,7 +41,7 @@ function FeedbackForm() {
     e.preventDefault();
     if (text.trim().length > 10) {
       const newFeedback = { text, rating };
-      if (context.feedbackEditData.isEditing) {
+      if (context.feedbackEditData.isEditing && context.feedbackEditData.item) {
         let id = context.feedbackEditData.item.id;
         context.updateFeedback(id, newFeedback);
       } else {

@@ -5,6 +5,9 @@ tasks:
 ports:
   - port: 3000
     onOpen: open-preview
+  - port: 5000
+    onOpen: ignore
+    visibility: public
 github:
   prebuilds:
     # enable for the default branch (defaults to true)
